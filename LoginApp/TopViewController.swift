@@ -29,6 +29,7 @@ class TopViewController: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,8 +45,6 @@ class TopViewController: UIViewController, UITextFieldDelegate {
                 massage: "Please, enter correct login and password"
             )
         }
-        userNameTF.resignFirstResponder()
-        passwordTF.resignFirstResponder()
         performSegue(withIdentifier: "setVC", sender: Self.self)
     }
     
