@@ -38,7 +38,7 @@ class TopViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func switchToAnotherScreen(){
+    @IBAction func switchToAnotherScreen() {
         if userNameTF.text != userName, passwordTF.text != password {
             showAlert(
                 title: "Invalid login or password",
@@ -54,7 +54,7 @@ class TopViewController: UIViewController, UITextFieldDelegate {
         : showAlert(title: "Hi", massage: "Your password is \(password)")
     }
     
-    @IBAction func unwind(for segue: UIStoryboardSegue){
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
         passwordTF.text = ""
     }
     
@@ -68,6 +68,7 @@ class TopViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 }
+
 extension TopViewController {
     func showAlert(title: String, massage: String) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
