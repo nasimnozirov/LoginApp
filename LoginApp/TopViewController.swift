@@ -58,7 +58,7 @@ class TopViewController: UIViewController, UITextFieldDelegate {
         passwordTF.text = ""
     }
     
-    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField.text == userName {
             passwordTF.becomeFirstResponder()
