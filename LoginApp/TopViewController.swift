@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//После запуска приложений у меня выходить ворнинг) пытался разобраться не получилось! HELP
 class TopViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var scrollView: UIScrollView!
     
