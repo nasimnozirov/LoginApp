@@ -13,8 +13,8 @@ class TopViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    let userName = "Nas"
-    let password = "ppp"
+    private let userName = "Nas"
+    private let password = "ppp"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class TopViewController: UIViewController, UITextFieldDelegate {
         passwordTF.text = ""
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField.text == userName {
             passwordTF.becomeFirstResponder()
@@ -70,7 +70,7 @@ class TopViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension TopViewController {
-    func showAlert(title: String, massage: String) {
+    private func showAlert(title: String, massage: String) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
         let okAction =  UIAlertAction(title: "OK", style: .default) { _ in
             self.passwordTF.text = " "
@@ -84,7 +84,7 @@ extension TopViewController {
 
 /// MARK: Setting - Keyboard
 extension TopViewController {
-    func registerForKeyboardNotifications() {
+    private func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(kbWillShow),
@@ -98,7 +98,7 @@ extension TopViewController {
         )
     }
     
-    func removeKeyboardNotifications() {
+    private func removeKeyboardNotifications() {
         NotificationCenter.default.removeObserver(
             self,
             name: UIResponder.keyboardWillShowNotification,
