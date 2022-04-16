@@ -6,46 +6,44 @@
 //
 
 import UIKit
-//После запуска приложений у меня выходить ворнинг) пытался разобраться не получилось! HELP
-class TopViewController: UIViewController, UITextFieldDelegate {
+
+class TopViewController: UIViewController {
+    
+    // MARK: - IB Outlets
     @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    // MARK: - Private properties
     private let userName = "Nas"
     private let password = "ppp"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameTF.delegate = self
-        passwordTF.delegate = self
-        
         registerForKeyboardNotifications()
     }
     deinit {
         registerForKeyboardNotifications()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super .touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
-    
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
         welcomeVC.welcome = userName
         
     }
     
+    // MARK: IBActions
     @IBAction func switchToAnotherScreen() {
         if userNameTF.text != userName, passwordTF.text != password {
             showAlert(
                 title: "Invalid login or password",
-                massage: "Please, enter correct login and password"
+                massage: "Please, enter correct login and password",
+                textField: passwordTF
             )
         }
-        performSegue(withIdentifier: "setVC", sender: Self.self)
+        performSegue(withIdentifier: "setVC", sender: nil)
     }
     
     @IBAction func showAlertOnClick(_ sender: UIButton) {
@@ -55,12 +53,23 @@ class TopViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
+        userNameTF.text = ""
         passwordTF.text = ""
     }
     
-     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        if textField.text == userName {
+     
+}
+
+// MARK: - Keyboard
+extension TopViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userNameTF {
             passwordTF.becomeFirstResponder()
         } else {
             switchToAnotherScreen()
@@ -69,11 +78,12 @@ class TopViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+// MARK: - Alert Controller
 extension TopViewController {
-    private func showAlert(title: String, massage: String) {
+    private func showAlert(title: String, massage: String, textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
         let okAction =  UIAlertAction(title: "OK", style: .default) { _ in
-            self.passwordTF.text = " "
+            textField?.text = ""
         }
         alert.addAction(okAction)
         present(alert, animated: true)
@@ -121,5 +131,7 @@ extension TopViewController {
     @objc func kbWillHide() {
         scrollView.contentOffset = CGPoint.zero
     }
+    
+   
 }
 
