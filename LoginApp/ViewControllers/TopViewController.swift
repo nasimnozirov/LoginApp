@@ -16,8 +16,8 @@ class TopViewController: UIViewController {
     @IBOutlet var passwordTF: UITextField!
     
     // MARK: - Private properties
-    private let userName = "Nas"
-    private let password = "ppp"
+    
+    let user = User.getUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +29,24 @@ class TopViewController: UIViewController {
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.welcome = userName
+        guard let tabBarController = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            if let welcomeVC = viewController as? WelcomeViewController {
+                welcomeVC.welcome = user.person.fullName
+            } else if let navigationVC = viewController as? UINavigationController {
+                if  let aboutUserVC = navigationVC.topViewController as? AboutMeViewController {
+                    aboutUserVC.aboutMe = user.person.aboutMe
+                }
+            }
+        }
         
     }
     
     // MARK: IBActions
     @IBAction func switchToAnotherScreen() {
-        if userNameTF.text != userName, passwordTF.text != password {
+        if userNameTF.text != user.userName, passwordTF.text != user.password {
             showAlert(
                 title: "Invalid login or password",
                 massage: "Please, enter correct login and password",
@@ -48,8 +58,8 @@ class TopViewController: UIViewController {
     
     @IBAction func showAlertOnClick(_ sender: UIButton) {
         sender.tag == 0
-        ? showAlert(title: "Hi", massage: "Your name is \(userName)")
-        : showAlert(title: "Hi", massage: "Your password is \(password)")
+        ? showAlert(title: "Hi", massage: "Your name is \(user.userName)")
+        : showAlert(title: "Hi", massage: "Your password is \(user.password)")
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
