@@ -8,8 +8,7 @@
 import UIKit
 
 class AboutMeViewController: UIViewController {
-
-   
+    
     @IBOutlet var aboutMeLabel: UILabel!
     
     let user = User.getUser()
@@ -21,13 +20,10 @@ class AboutMeViewController: UIViewController {
         super.viewDidLoad()
         aboutMeLabel.text = aboutMe
         self.title = user.person.fullName
-       
     }
     
-   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let imageVC = segue.destination as? ImageViewController else { return }
         imageVC.image = user.person.image
     }
-
 }

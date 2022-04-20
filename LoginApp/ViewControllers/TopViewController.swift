@@ -15,17 +15,36 @@ class TopViewController: UIViewController {
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    // MARK: - Private properties
-    
     let user = User.getUser()
+    
+    // to store the current active textfield
+    //    private var activeTextField: UITextField? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNameTF.delegate = self
+        passwordTF.delegate = self
+        
+        //        // call the 'keyboardWillShow' function when the view controller receive notification that keyboard is going to be shown
+        //            NotificationCenter.default.addObserver(
+        //                self,
+        //                selector: #selector(keyboardWillShow(notification:)),
+        //                name: UIResponder.keyboardWillShowNotification,
+        //                object: nil
+        //            )
+        //
+        //        // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
+        //            NotificationCenter.default.addObserver(
+        //                self,
+        //                selector: #selector(keyboardWillHide(notification:)),
+        //                name: UIResponder.keyboardWillHideNotification,
+        //                object: nil
+        //            )
         registerForKeyboardNotifications()
     }
-    deinit {
-        registerForKeyboardNotifications()
-    }
+    //    deinit {
+    //        registerForKeyboardNotifications()
+    //    }
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,10 +56,8 @@ class TopViewController: UIViewController {
                 welcomeVC.welcome = user.person.fullName
             } else if let navigationVC = viewController as? UINavigationController {
                 
-                if  let aboutUserVC = navigationVC.topViewController as? AboutMeViewController {
-                    aboutUserVC.aboutMe = user.person.aboutMe
-                    
-                }
+                guard  let aboutUserVC = navigationVC.topViewController as? AboutMeViewController else { return }
+                aboutUserVC.aboutMe = user.person.aboutMe
             }
         }
         
@@ -68,13 +85,10 @@ class TopViewController: UIViewController {
         userNameTF.text = ""
         passwordTF.text = ""
     }
-    
-     
 }
 
 // MARK: - Keyboard
 extension TopViewController: UITextFieldDelegate {
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -99,9 +113,7 @@ extension TopViewController {
         }
         alert.addAction(okAction)
         present(alert, animated: true)
-        
     }
-    
 }
 
 /// MARK: Setting - Keyboard
@@ -143,7 +155,45 @@ extension TopViewController {
     @objc func kbWillHide() {
         scrollView.contentOffset = CGPoint.zero
     }
-    
-   
 }
 
+//// MARK: - Keyboard Appears
+//extension TopViewController {
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+//            // if keyboard size is not available for some reason, dont do anything
+//            return
+//        }
+//
+//        var shouldMoveStackViewUp = false
+//
+//        // поднимаем stackview с кнопками
+//        if let _ = activeTextField {
+//
+//            let bottomOfStackView = scrollView.convert(scrollView.bounds, to: self.view).maxY
+//            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+//
+//            // if the bottom of Textfield is below the top of keyboard, move up
+//            if bottomOfStackView > topOfKeyboard {
+//                shouldMoveStackViewUp = true
+//            }
+//        }
+//
+//        if shouldMoveStackViewUp {
+//            scrollView.frame.origin.y = self.view.frame.height - keyboardSize.height - 56
+//        }
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        // move back the root view origin to zero
+//        self.scrollView.frame.origin.y = self.view.frame.height - 96
+//    }
+//
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.activeTextField = textField
+//    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        self.activeTextField = nil
+//    }
+//}

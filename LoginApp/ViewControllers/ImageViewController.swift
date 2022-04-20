@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageViewController: UIViewController {
-
+    
     @IBOutlet var imageView: UIImageView!
     
     let user = User.getUser()
@@ -20,7 +20,5 @@ class ImageViewController: UIViewController {
         imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.image = UIImage(named: image)
         self.title = user.person.fullName
-       
     }
-
 }
