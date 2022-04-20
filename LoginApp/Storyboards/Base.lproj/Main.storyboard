@@ -189,18 +189,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q6o-iO-0kX">
-                                <rect key="frame" x="35" y="155.5" width="250" height="250"/>
+                                <rect key="frame" x="17.5" y="138" width="285" height="285"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="S0R-3I-J6K"/>
-                                    <constraint firstAttribute="width" constant="250" id="j0j-bp-xv6"/>
+                                    <constraint firstAttribute="height" constant="285" id="eSo-rH-leT"/>
+                                    <constraint firstAttribute="width" constant="285" id="s6w-fe-UYg"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a1I-pM-DvM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="1" green="0.80742497067560237" blue="0.87639335229308646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="Q6o-iO-0kX" firstAttribute="centerY" secondItem="a1I-pM-DvM" secondAttribute="centerY" id="Syk-XK-pJn"/>
-                            <constraint firstItem="Q6o-iO-0kX" firstAttribute="centerX" secondItem="a1I-pM-DvM" secondAttribute="centerX" id="vZ3-KI-uSz"/>
+                            <constraint firstItem="Q6o-iO-0kX" firstAttribute="centerY" secondItem="a1I-pM-DvM" secondAttribute="centerY" id="dX0-e2-JIw"/>
+                            <constraint firstItem="Q6o-iO-0kX" firstAttribute="centerX" secondItem="a1I-pM-DvM" secondAttribute="centerX" id="fN7-Kb-mkC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bkJ-6A-Ugb"/>
@@ -231,7 +231,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9rF-Nq-RMq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="1" green="0.93801495825847769" blue="0.85686156042580541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="9rF-Nq-RMq" firstAttribute="bottom" secondItem="eIP-R9-OgM" secondAttribute="bottom" constant="50" id="HCK-7z-biV"/>
                             <constraint firstItem="9rF-Nq-RMq" firstAttribute="trailing" secondItem="eIP-R9-OgM" secondAttribute="trailing" constant="50" id="ahc-Jb-BUc"/>
@@ -242,7 +242,7 @@
                     <navigationItem key="navigationItem" id="Tsq-f3-aEc">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="Fh5-Qi-rvx">
                             <connections>
-                                <segue destination="M6e-mp-TsS" kind="show" id="H4x-pj-Muf"/>
+                                <segue destination="M6e-mp-TsS" kind="show" identifier="image" id="H4x-pj-Muf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

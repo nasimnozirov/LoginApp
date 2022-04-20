@@ -17,6 +17,8 @@ class ImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.layer.cornerRadius = imageView.frame.width / 2
+        imageView.image = UIImage(named: image)
         self.title = user.person.fullName
        
     }

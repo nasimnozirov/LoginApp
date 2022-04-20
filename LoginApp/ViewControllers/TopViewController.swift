@@ -36,8 +36,10 @@ class TopViewController: UIViewController {
             if let welcomeVC = viewController as? WelcomeViewController {
                 welcomeVC.welcome = user.person.fullName
             } else if let navigationVC = viewController as? UINavigationController {
+                
                 if  let aboutUserVC = navigationVC.topViewController as? AboutMeViewController {
                     aboutUserVC.aboutMe = user.person.aboutMe
+                    
                 }
             }
         }
