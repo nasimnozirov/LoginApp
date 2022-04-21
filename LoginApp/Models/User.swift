@@ -8,14 +8,14 @@
 import Foundation
 
 struct User {
-    let userame: String
+    let userName: String
     let password: String
     let person: Person
     
     static func getUser() -> User {
         User(
-            userame: "Nas",
-            password: "ppp",
+            userName: "nas",
+            password: "nnn",
             person: Person.getPerson()
         )
     }
