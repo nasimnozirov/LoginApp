@@ -9,16 +9,16 @@ import UIKit
 
 class ImageViewController: UIViewController {
     
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var imageView: UIImageView! {
+        didSet {
+            imageView.layer.cornerRadius = imageView.frame.width / 2
+        }
+    }
     
-    let user = User.getUser()
-    
-    var image = ""
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        imageView.image = UIImage(named: image)
-        self.title = user.person.fullName
+        imageView.image = UIImage(named: user.person.image)
     }
 }

@@ -41,10 +41,10 @@
                                                 <rect key="frame" x="8" y="277" width="304" height="112"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCy-dT-lLt">
-                                                        <rect key="frame" x="106.5" y="0.0" width="91" height="42"/>
+                                                        <rect key="frame" x="114" y="0.0" width="76" height="42"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="25"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="Button">
+                                                        <state key="normal" title="Login">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -222,9 +222,9 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIP-R9-OgM">
                                 <rect key="frame" x="50" y="50" width="220" height="370"/>
-                                <mutableString key="text">Привет, привет! мне 23! работаю Бариста и тренером по кофе. В ноябре я понял, что хочу стать разработчиком и вот после долгое раздумья, решил стать ios разработчиком. Я родом из Душанбе, сюда приехал на обучение в Универе.
+                                <string key="text">Привет, привет! мне 23! работаю Бариста и тренером по кофе. В ноябре я понял, что хочу стать разработчиком и вот после долгое раздумья, решил стать ios разработчиком. Я родом из Душанбе, сюда приехал на обучение в Универе.
     Мое хобби - это спорт и кофе ( правда на данный момент это толко уроки  в swiftBook 🤓)
-    Приятно было с вами познакомиться! до встречи.</mutableString>
+    Приятно было с вами познакомиться! до встречи.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -260,6 +260,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RfN-ro-sHZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="house" catalog="system" id="AQw-qE-8yC">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
