@@ -41,7 +41,7 @@ class TopViewController: UIViewController {
     
     // MARK: IBActions
     @IBAction func switchToAnotherScreen() {
-        guard userNameTF.text == user.userame, passwordTF.text == user.password else {
+        guard userNameTF.text == user.userName, passwordTF.text == user.password else {
             showAlert(
                 title: "Invalid login or password",
                 massage: "Please, enter correct login and password",
@@ -54,7 +54,7 @@ class TopViewController: UIViewController {
     
     @IBAction func showAlertOnClick(_ sender: UIButton) {
         sender.tag == 0
-        ? showAlert(title: "Hi", massage: "Your name is \(user.userame)")
+        ? showAlert(title: "Hi", massage: "Your name is \(user.userName)")
         : showAlert(title: "Hi", massage: "Your password is \(user.password)")
     }
     
